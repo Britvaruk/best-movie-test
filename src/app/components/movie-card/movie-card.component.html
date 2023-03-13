@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="movie-info">
+    <div class="image-wrapper">
+      <img src="images/{{movie.id}}.jpeg" alt="img">
+    </div>
+    <div>
+      <h3>
+        {{ movie.name }}
+      </h3>
+    </div>
+    <div>{{ movie.genre | genresList }}</div>
+    <div>{{ movie.year }}</div>
+  </div>
+  
+  <a class="like" (click)="toggleFavoriteMovie(movie.id)">
+    <ng-container *ngIf="favoriteMovieId !== movie.id; else favoriteIcon">
+      <mat-icon fontIcon="favorite_border"></mat-icon>
+    </ng-container>
+    <ng-template #favoriteIcon>
+      <mat-icon fontIcon="favorite"></mat-icon>
+    </ng-template>          
+  </a>
+</div>
