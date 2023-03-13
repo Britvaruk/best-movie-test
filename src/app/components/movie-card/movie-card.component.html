@@ -1,18 +1,14 @@
-<div class="card">
+<div class="movie-card" (click)="openCardModal()">
   <div class="movie-info">
     <div class="image-wrapper">
       <img src="images/{{movie.id}}.jpeg" alt="img">
     </div>
-    <div>
-      <h3>
-        {{ movie.name }}
-      </h3>
-    </div>
-    <div>{{ movie.genre | genresList }}</div>
-    <div>{{ movie.year }}</div>
+    <h3>{{ movie.name }}</h3>    
+    <span>{{ movie.genre | genresList }}</span>
+    <span>{{ movie.year }}</span>
   </div>
   
-  <a class="like" (click)="toggleFavoriteMovie(movie.id)">
+  <a class="favorite-button" (click)="toggleFavoriteMovie($event, movie.id)">
     <ng-container *ngIf="favoriteMovieId !== movie.id; else favoriteIcon">
       <mat-icon fontIcon="favorite_border"></mat-icon>
     </ng-container>

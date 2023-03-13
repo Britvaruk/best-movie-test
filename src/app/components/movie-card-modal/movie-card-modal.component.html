@@ -1,0 +1,30 @@
+<div class="movie-card">
+  <div class="image-wrapper">
+    <img src="images/{{movie.id}}.jpeg" alt="img">
+  </div>
+  <div class="info-wrapper">
+    <div class="movie-info">
+      <h3>{{ movie.name }}</h3>    
+      <span>{{ movie.genre | genresList }}</span>
+      <span>{{ movie.year }}</span>
+      <div class="description">
+        <span>{{ movie.description }}</span>
+      </div>
+    </div>
+    <div class="button-block">
+      <ng-container *ngIf="favoriteMovieId !== movie.id; else removeButton">
+        <button mat-button color="primary" (click)="toggleFavoriteMovie(movie.id)">
+          Выбрать лучшим фильмом
+        </button>
+      </ng-container> 
+      <ng-template #removeButton>
+        <button mat-button color="warn" (click)="toggleFavoriteMovie(movie.id)">
+          Удалить из лучших фильмов
+        </button>
+      </ng-template>
+      <button mat-button mat-dialog-close color="accent">
+        Закрыть
+      </button>
+    </div>
+  </div>  
+</div>
